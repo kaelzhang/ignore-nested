@@ -1,7 +1,7 @@
 {
   "name": "ignore-nested",
   "version": "1.0.0",
-  "description": "ignore-nested",
+  "description": "Nested and hierarchical .gitignore rules manager and walker",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc ava --timeout=10s",
@@ -23,7 +23,10 @@
     "node": ">= 6"
   },
   "ava": {
-    "babel": false
+    "babel": false,
+    "files": [
+      "test/*.test.js"
+    ]
   },
   "author": "kaelzhang",
   "license": "MIT",
@@ -33,9 +36,18 @@
   "devDependencies": {
     "ava": ">= 1.0.0-beta.6",
     "codecov": "^3.0.2",
-    "nyc": "^12.0.2",
+    "eslint": "^5.1.0",
     "eslint-config-ostai": "^1.1.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint": "^5.1.0"
+    "lodash.foreach": "^4.5.0",
+    "mkdirp": "^0.5.1",
+    "nyc": "^12.0.2",
+    "pre-suf": "^1.1.0",
+    "rimraf": "^2.6.2",
+    "spawn-sync": "^2.0.0",
+    "tmp": "0.0.33"
+  },
+  "dependencies": {
+    "ignore": "^4.0.3"
   }
 }

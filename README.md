@@ -20,7 +20,7 @@
 ## Install
 
 ```sh
-$ npm install ignore-nested
+$ npm i ignore-nested
 ```
 
 ## Usage
