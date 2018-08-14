@@ -1,10 +1,21 @@
 const {test} = require('ava')
 const log = require('util').debuglog('ignore-nested')
+const forEach = require('lodash.foreach')
 
 const CASES = require('./lib/cases')
 const {
   parsePaths, prepare, getNativeGitIgnoreResults
 } = require('./lib/prepare')
+
+const nested = require('..')
+
+const REGEX = /(?:(.+)\/)?\.gitignore$/
+const getIgnoreSubPath = p => {
+  const match = p.match(REGEX)
+  return match
+    ? match[1]
+    : ''
+}
 
 CASES.forEach(([d, rules, pathsMap]) => {
   const {paths, result} = parsePaths(pathsMap)
@@ -13,6 +24,28 @@ CASES.forEach(([d, rules, pathsMap]) => {
   test(`case: ${d}`, t => {
     const git_paths = getNativeGitIgnoreResults(dir, paths)
 
-    t.deepEqual(result.sort(), git_paths.sort())
+    t.deepEqual(git_paths.sort(), result)
+  })
+
+  test(`nested: ${d}`, t => {
+    const ignore = nested()
+
+    forEach(rules, (content, p) => {
+      const sub_path = getIgnoreSubPath(p)
+
+      sub_path
+        ? ignore.add(content, sub_path)
+        : ignore.add(content)
+    })
+
+    // console.log('ignore', ignore)
+    // console.log(ignore._rules[''])
+    // console.log(ignore._rules['a'])
+    // console.log(ignore._rules['b.js'])
+
+    const filtered = ignore.filter(paths)
+    // console.log('filtered', filtered)
+
+    t.deepEqual(filtered, result)
   })
 })

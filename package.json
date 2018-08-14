@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "nyc ava --timeout=10s",
+    "test:no-cov": "ava --timeout=10s --verbose",
     "test-no-report": "NODE_DEBUG=ignore-nested nyc ava --timeout=10s --verbose",
     "lint": "eslint .",
     "posttest": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
@@ -34,11 +35,11 @@
     "url": "https://github.com/kaelzhang/ignore-nested/issues"
   },
   "devDependencies": {
-    "ava": ">= 1.0.0-beta.6",
+    "ava": ">= 1.0.0-beta.7",
     "codecov": "^3.0.2",
     "eslint": "^5.1.0",
-    "eslint-config-ostai": "^1.1.0",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint-config-ostai": "^1.4.0",
+    "eslint-plugin-import": "^2.14.0",
     "lodash.foreach": "^4.5.0",
     "mkdirp": "^0.5.1",
     "nyc": "^12.0.2",
@@ -48,6 +49,6 @@
     "tmp": "0.0.33"
   },
   "dependencies": {
-    "ignore": "^4.0.3"
+    "ignore": "^5.0.1"
   }
 }
