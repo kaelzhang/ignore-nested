@@ -47,5 +47,15 @@ c
       'A/B/a.js': 0,
       'A/B/b.js': 1
     }
-  ]
+  ],
+  [
+    'parent directory ignored then unignored',
+    {
+      '.gitignore': 'baz',
+      'foo/bar/.gitignore': '!baz'
+    },
+    {
+      'foo/bar/baz/quux/a.js': 0
+    }
+  ],
 ]

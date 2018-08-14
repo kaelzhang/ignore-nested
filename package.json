@@ -49,6 +49,7 @@
     "tmp": "0.0.33"
   },
   "dependencies": {
+    "core-util-is": "^1.0.2",
     "ignore": "^5.0.1"
   }
 }

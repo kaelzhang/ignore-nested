@@ -117,7 +117,7 @@ class Nested {
     return this._test(rest, largerTarget, true)
   }
 
-  ignores (p) {
+  ignores (p, noTestParent) {
     const splitted = p.split(sep)
 
     // ['foo', '/'] -> ['foo/']
@@ -128,7 +128,7 @@ class Nested {
     }
 
     const f = splitted.pop()
-    return this._test(splitted, f).ignored
+    return this._test(splitted, f, noTestParent).ignored
   }
 
   filter (paths) {
